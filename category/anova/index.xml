@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ANOVA | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/category/anova/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/category/anova/index.xml" rel="self" type="application/rss+xml" />
+    <description>ANOVA</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 11 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>ANOVA</title>
+      <link>https://chisholm.forestecosystems.ca/category/anova/</link>
+    </image>
+    
+    <item>
+      <title>ANOVA: one way repeated measures</title>
+      <link>https://chisholm.forestecosystems.ca/post/anova-one-way-repeated-measures/</link>
+      <pubDate>Wed, 11 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/anova-one-way-repeated-measures/</guid>
+      <description>
+
+
+&lt;p&gt;A fellow grad student asked if I had ever done a repeated measures ANOVA. I went back to my stats labs and found some code in a &lt;code&gt;.R&lt;/code&gt; script. Here I re-use and update that code within this markdown report to provide some commentary.&lt;/p&gt;
+&lt;div id=&#34;scenario&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Scenario&lt;/h1&gt;
+&lt;p&gt;The weights of moose calves from different regions are are compared over three time periods. &lt;a href=&#34;#fn1&#34; class=&#34;footnote-ref&#34; id=&#34;fnref1&#34;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/a&gt;. Using a repeated measures ANOVA we need to determine if the weights at each time interval are significantly different from one another.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Is there a change in the weight of moose calves over the three time periods?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div id=&#34;null-hypothesis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Null hypothesis&lt;/h2&gt;
+&lt;p&gt;The weights of the calves remain constant over time.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0 : \mu_1 = \mu_2 = \mu_3\]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Analysis&lt;/h2&gt;
+&lt;p&gt;This analysis examined the change on weight of the moose calves over three time periods.
+However, this does not consider the influence of the eco regions. The independent variable is time
+with 3 time periods and the dependent variables are the weight.&lt;/p&gt;
+&lt;div id=&#34;load-libraries&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Load libraries&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(lsr)
+
+library(car)         #for levene test 
+library(onewaytests) #for &amp;#39;Brown-Forsyth&amp;#39; and &amp;#39;Welch Test&amp;#39; 
+library(reshape2)    #to rearrange the date  (i.e. melt)
+library(tidyr)       #to rearrange the data  (i.e. gather)
+library(moments)     #for Skewness and Kurtosis 
+library(nortest)     #For testing normality
+library(reshape2)
+#Libraries for Graphs 
+library(qqplotr) # library extention to ggplot2 gives Q-Q ability 
+library(ggplot2) # Utilizes ggplot 2 graphics library 
+require(gridExtra) # used to plot 2 graphs side by side (using ggplot)
+
+library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;import-data&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Import data&lt;/h3&gt;
+&lt;p&gt;The data is imported and rearranged for analysis&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# myData &amp;lt;- read.csv(&amp;quot;./rawData/AnovaDatabase_Labels.csv&amp;quot;, header = TRUE)
+myData &amp;lt;- read.csv(&amp;quot;e:/workspace/NRES776/Chisholm_LabProject2/Lab06_ANOVA/rawData/AnovaDatabase_Labels.csv&amp;quot;)
+
+weights &amp;lt;- myData %&amp;gt;% select(Weight1, Weight2, Weight3) %&amp;gt;% 
+  pivot_longer(Weight1: Weight3, names_to = &amp;quot;Period&amp;quot;, values_to = &amp;quot;Weights&amp;quot;) %&amp;gt;% 
+  mutate(Period = as.factor(Period)) ## need period as a factor for lm() analysis &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# activity2 &amp;lt;- myData[,c(&amp;quot;Weight1&amp;quot;, &amp;quot;Weight2&amp;quot;, &amp;quot;Weight3&amp;quot;)]  ## just examine the weights
+knitr::kable(head(weights, 10),
+             caption = &amp;quot;First few weights in the data&amp;quot;) %&amp;gt;% 
+  kableExtra::kable_styling()&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:unnamed-chunk-3&#34;&gt;Table 1: &lt;/span&gt;First few weights in the data&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th align=&#34;left&#34;&gt;Period&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Weights&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;48&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;45&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;47&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;45&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;44&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight2&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;39&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight3&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;36&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td align=&#34;left&#34;&gt;Weight1&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;47&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;complete-anova&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Complete ANOVA&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;a &amp;lt;- lm(weights$Weights ~ weights$Period)
+a.aov &amp;lt;- anova(a)
+print(a.aov)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Analysis of Variance Table
+## 
+## Response: weights$Weights
+##                Df  Sum Sq Mean Sq F value   Pr(&amp;gt;F)   
+## weights$Period  2  365.87 182.933  6.1424 0.003197 **
+## Residuals      87 2591.03  29.782                    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;complete-post-hoc-test-if-the-anova-is-significant&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Complete Post-hoc test if the ANOVA is significant&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;if (a.aov[1,&amp;quot;Pr(&amp;gt;F)&amp;quot;] &amp;lt; 0.05)  {
+  print(&amp;quot;Post Hoc Analysis:&amp;quot;)
+  pairwise.t.test(weights$Weights, weights$Period, p.adj = &amp;quot;bonferroni&amp;quot;)
+} else {
+  print(&amp;quot;H0 affirmed, no post hoc required&amp;quot;)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] &amp;quot;Post Hoc Analysis:&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+##  Pairwise comparisons using t tests with pooled SD 
+## 
+## data:  weights$Weights and weights$Period 
+## 
+##         Weight1 Weight2
+## Weight2 0.1852  -      
+## Weight3 0.0022  0.3340 
+## 
+## P value adjustment method: bonferroni&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;eta-squared-power-test&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Eta-squared – power test&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;etaSquared(a, type = 2, anova = FALSE)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;##                   eta.sq eta.sq.part
+## weights$Period 0.1237332   0.1237332&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;results&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Results&lt;/h2&gt;
+&lt;p&gt;A repeated measure ANOVA was showed that moose calf weights changed significantly over the three time periods (&lt;span class=&#34;math inline&#34;&gt;\(F−value = 6.1424 [df: 2; 87 ]\)&lt;/span&gt;, &lt;span class=&#34;math inline&#34;&gt;\(p−value : 0.0032\)&lt;/span&gt;). Effect size calculated as medium to large (&lt;span class=&#34;math inline&#34;&gt;\(\eta^2 = 0.1237332\)&lt;/span&gt;). A Post hoc analysis using the Bonferroni test&lt;a href=&#34;#fn2&#34; class=&#34;footnote-ref&#34; id=&#34;fnref2&#34;&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;showed that the only significant difference in weights was between period 1 and period 3 (&lt;span class=&#34;math inline&#34;&gt;\(p−value = 0.0022\)&lt;/span&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn1&#34;&gt;&lt;p&gt;Adapted from Farhad Moghimehfar’s lab assignment&lt;a href=&#34;#fnref1&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li id=&#34;fn2&#34;&gt;&lt;p&gt;The Bonferroni test is a common and flexible test that is effective for a low number of paired data.&lt;a href=&#34;#fnref2&#34; class=&#34;footnote-back&#34;&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

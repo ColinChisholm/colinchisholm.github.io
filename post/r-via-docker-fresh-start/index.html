@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<!-- This site was created with Wowchemy. https://www.wowchemy.com -->
+<!-- Last Published: January 19, 2023 --><html lang="en-us" >
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  
+  
+    <meta name="generator" content="Wowchemy 5.7.0 for Hugo" />
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+
+  
+  
+  
+    
+      
+      <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    
+  
+
+  
+  
+
+  
+  
+    
+    <script src="/js/mathjax-config.js"></script>
+  
+
+  
+
+  <link rel="stylesheet" href="/css/vendor-bundle.min.16f785cdb553c8c4431db6775122af35.css" media="print" onload="this.media='all'">
+
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.2/css/academicons.min.css" integrity="sha512-KlJCpRsLf+KKu2VQa5vmRuClRFjxc5lXO03ixZt82HZUk41+1I0bD8KBSA0fY290ayMfWYI9udIqeOWSu1/uZg==" crossorigin="anonymous" media="print" onload="this.media='all'">
+    
+
+    
+    
+    
+    
+      
+      
+    
+    
+    
+
+    
+    
+    
+
+    
+
+    
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+    
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/wowchemy.19b9d55037e425bd10a1f967f19f602d.css" />
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="/css/libs/chroma/github-light.min.css" title="hl-light" media="print" onload="this.media='all'" >
+    <link rel="stylesheet" href="/css/libs/chroma/github-dark.min.css" title="hl-dark" media="print" onload="this.media='all'" disabled>
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+
+
+
+
+  <meta name="author" content="Colin Chisholm RPF" />
+
+
+
+
+
+  
+
+<meta name="description" content="Instructions below include Cleanup of existing docker Installation of a fresh RStudio Server via rocker/geospatial Ensuring the addition of needed packages Installation of SAGA-GIS in the new container Some visual tweaks Clean-up/Clear-out Docker On my windows machine docker ended up taking up way too much space (e." />
+
+
+
+<link rel="alternate" hreflang="en-us" href="https://chisholm.forestecosystems.ca/post/r-via-docker-fresh-start/" />
+<link rel="canonical" href="https://chisholm.forestecosystems.ca/post/r-via-docker-fresh-start/" />
+
+
+
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+
+
+<link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
+<link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
+
+<meta name="theme-color" content="#4caf50" />
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+<meta property="twitter:card" content="summary" />
+
+  <meta property="twitter:site" content="@wowchemy" />
+  <meta property="twitter:creator" content="@wowchemy" />
+<meta property="twitter:image" content="https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
+<meta property="og:site_name" content="Colin Chisholm" />
+<meta property="og:url" content="https://chisholm.forestecosystems.ca/post/r-via-docker-fresh-start/" />
+<meta property="og:title" content="R via Docker — A fresh start | Colin Chisholm" />
+<meta property="og:description" content="Instructions below include Cleanup of existing docker Installation of a fresh RStudio Server via rocker/geospatial Ensuring the addition of needed packages Installation of SAGA-GIS in the new container Some visual tweaks Clean-up/Clear-out Docker On my windows machine docker ended up taking up way too much space (e." /><meta property="og:image" content="https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+
+  
+    <meta
+      property="article:published_time"
+      content="2022-12-19T00:00:00&#43;00:00"
+    />
+  
+  
+    <meta property="article:modified_time" content="2022-12-19T08:23:33-08:00">
+  
+
+
+
+
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://chisholm.forestecosystems.ca/post/r-via-docker-fresh-start/"
+  },
+  "headline": "R via Docker — A fresh start",
+  
+  "datePublished": "2022-12-19T00:00:00Z",
+  "dateModified": "2022-12-19T08:23:33-08:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Colin Chisholm RPF"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Colin Chisholm",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Instructions below include Cleanup of existing docker Installation of a fresh RStudio Server via rocker/geospatial Ensuring the addition of needed packages Installation of SAGA-GIS in the new container Some visual tweaks Clean-up/Clear-out Docker On my windows machine docker ended up taking up way too much space (e."
+}
+</script>
+
+  
+
+  
+
+
+
+
+  
+  
+  
+
+  
+  
+
+  
+
+
+  
+  <title>R via Docker — A fresh start | Colin Chisholm</title>
+
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="2d57ea8018a43fea3dc5a8d5316daabf" >
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <script src="/js/wowchemy-init.min.9a65e07084dad520cb0dc271439d1780.js"></script>
+
+  
+
+
+<aside class="search-modal" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#" aria-label="Close"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control"
+        aria-label="Search...">
+        
+      </div>
+
+      
+      
+
+      
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+
+  <div class="page-header header--fixed">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+    <div class="container-xl">
+
+      
+      <div class="d-none d-lg-inline-flex">
+        <a class="navbar-brand" href="/">Colin Chisholm</a>
+      </div>
+      
+
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+      <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+      
+      <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+        <a class="navbar-brand" href="/">Colin Chisholm</a>
+      </div>
+      
+
+      
+      
+      <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+        
+        <ul class="navbar-nav d-md-inline-flex">
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#about"><span>Home</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/post"><span>Posts</span></a>
+          </li>
+
+          
+          
+
+          
+
+          
+          
+          
+            
+          
+
+          
+
+          
+          
+          
+          
+
+          
+            
+              
+              
+            
+            
+              
+              
+              
+                
+              
+              
+            
+          
+
+          <li class="nav-item">
+            <a class="nav-link " href="/#contact"><span>Contact</span></a>
+          </li>
+
+          
+          
+
+        
+
+          
+        </ul>
+      </div>
+
+      <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+
+        
+        
+          
+            
+            <li class="nav-item d-none d-lg-inline-flex">
+              <a class="nav-link" href="https://mastodon.social/@colinchisholm@fosstodon.org" data-toggle="tooltip" data-placement="bottom" title="Mastodon" target="_blank" rel="noopener" aria-label="Mastodon">
+                <i class="fab fa-mastodon" aria-hidden="true"></i>
+              </a>
+            </li>
+          
+        
+
+        
+        
+        
+
+        
+        
+        
+        <li class="nav-item dropdown theme-dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-label="Display preferences">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu">
+            <a href="#" class="dropdown-item js-set-theme-light">
+              <span>Light</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-dark">
+              <span>Dark</span>
+            </a>
+            <a href="#" class="dropdown-item js-set-theme-auto">
+              <span>Automatic</span>
+            </a>
+          </div>
+        </li>
+        
+
+        
+        
+
+      </ul>
+
+    </div>
+  </nav>
+</header>
+
+
+  </div>
+
+  <div class="page-body">
+    
+    
+    
+
+    <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>R via Docker — A fresh start</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Dec 19, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/r/">R</a>, <a href="/category/docker/">Docker</a></span>
+  
+
+</div>
+
+    
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h3 id="instructions-below-include">Instructions below include</h3>
+<ol>
+<li>Cleanup of existing docker</li>
+<li>Installation of a fresh RStudio Server via <code>rocker/geospatial</code></li>
+<li>Ensuring the addition of needed packages</li>
+<li>Installation of SAGA-GIS in the new container</li>
+<li>Some visual tweaks</li>
+</ol>
+<h3 id="clean-upclear-out-docker">Clean-up/Clear-out Docker</h3>
+<p>On my windows machine docker ended up taking up <em>way too much space</em> (e.g. well over 80Gb) and was crowding my hard disk space. I have obviously assumed you know how to get docker running on windows, If you need to figure that out see <a href="https://www.docker.com" target="_blank" rel="noopener">Docker.com</a> and I found this <a href="https://www.youtube.com/watch?v=IMZY0nUYhcg" target="_blank" rel="noopener">quick video on YouTube</a> with simple and clear instructions.</p>
+<p>To rectify this I had to reset Docker&rsquo;s virtual disk as per <a href="https://marcroussy.com/2020/12/01/cleaning-up-docker-disk-space-in-wsl2/" target="_blank" rel="noopener">M. Roussy</a>.</p>
+<ol>
+<li>Open Docker GUI</li>
+<li>Bug tab</li>
+<li>Clean/Purge data (select them all)</li>
+</ol>
+<p>These steps reduced the massive footprint that Docker was holding.  Now I need to restore my go-to image.</p>
+<h3 id="rstudio-server-with-geospatial-packages">RStudio Server with geospatial packages</h3>
+<p><a href="https://hub.docker.com" target="_blank" rel="noopener">Dockerhub</a> is the place to find most any image that you can imagine.  In my case I use <a href="https://posit.co" target="_blank" rel="noopener">Rstudio</a> by <em>posit</em> with R and numerous geospatial packages for the R environment.  I find this image has most of what I need:</p>
+<p style="text-align:center; font-size:130%;"><a href="https://hub.docker.com/r/rocker/geospatial" target="_blank" /><code>rocker/geospatial</code></a></p>
+<ol>
+  <li>Download the docker image.<br>In this example, I did not choose the lastest.  As I want install additional packages going back a version-point may be more beneficial (e.g. to reduce occurrences of packages not being available for my version of R.)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">$docker</span> pull rocker/geospatial:4.1.1
+</span></span></code></pre></div>  </li>
+  <li>Create a new container
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker run --name rockergeo ^               <span class="c1">## Name the container </span>
+</span></span><span class="line"><span class="cl">           -d                               <span class="c1">## detached mode</span>
+</span></span><span class="line"><span class="cl">           -v windows/folder:/home/rstudio  <span class="c1">## share a file location with docker</span>
+</span></span><span class="line"><span class="cl">           -p 8787:8787                     <span class="c1">## port to view Rstudio Server</span>
+</span></span><span class="line"><span class="cl">           -e <span class="nv">PASSWORD</span><span class="o">=</span>somepassword         <span class="c1">## create the password</span>
+</span></span><span class="line"><span class="cl">           -e <span class="nv">TZ</span><span class="o">=</span><span class="s2">&#34;America/Vancouver&#34;</span>        <span class="c1">## set the timezone </span>
+</span></span><span class="line"><span class="cl">           rocker/geospatial:4.1.1          <span class="c1">## docker image to use </span>
+</span></span></code></pre></div>   <ul>
+     <li><code>-v</code> can be used numerous times to link various locations.</li>
+     <li><code>-e TZ</code> I find this useful especially when generating reports.  So the time generated is actually my time.  A list of timezones is <a href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List" target="_blank"/>linked here</a></li>
+     </ul>
+</ol>
+<p>Your docker container is now running. To use it open your web-browser and navigate to: <code>http://localhost:8787</code>.</p>
+<h3 id="add-additional-packages">Add additional packages</h3>
+<p>Most likely not every package that you ever use is available in the default image, below I install what might be missing &ndash; based on my previous use of <code>R</code>.</p>
+<p>Hopefully from another installation, or your past experience with <code>R</code> you have a list of packages that you use.  To generate one:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">## Save current list of packages</span>
+</span></span><span class="line"><span class="cl"><span class="n">mypackages</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">installed.packages</span><span class="p">()</span><span class="n">[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">mypackages</span><span class="p">,</span> <span class="s">&#34;somewhere/mypackages.csv&#34;</span><span class="p">)</span>
+</span></span></code></pre></div><p>In the new docker session.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">pks</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&#34;~/somewhere/mypackages.csv&#34;</span><span class="p">)</span> <span class="c1">## list from above</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## installed already</span>
+</span></span><span class="line"><span class="cl"><span class="n">hav</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">installed.packages</span><span class="p">()</span><span class="n">[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="o">:</span><span class="m">4</span><span class="p">)</span><span class="n">]</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## to be installed</span>
+</span></span><span class="line"><span class="cl"><span class="n">intl</span> <span class="o">&lt;-</span> <span class="nf">setdiff</span><span class="p">(</span><span class="n">hav</span><span class="o">$</span><span class="n">Package</span><span class="p">,</span> <span class="n">pks</span><span class="o">$</span><span class="n">Package</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">install.packages</span><span class="p">(</span><span class="n">intl</span><span class="p">)</span>
+</span></span></code></pre></div><h4 id="rmarkdown-tweaks">Rmarkdown tweaks</h4>
+<p>Some updating will be needed, especially if generating PDF or TEX based documents run:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">tinytex</span><span class="o">::</span><span class="nf">install_tinytex</span><span class="p">()</span>
+</span></span></code></pre></div><p>Also, remember that the initial pdf builds will likely take a little extra time as <code>TinyTex</code> will install the needed TEX packages.</p>
+<h3 id="install-of-saga-gis">Install of SAGA-GIS</h3>
+<p>I often use a number of SAGA-GIS modules.  To make these available I need to:</p>
+<ol>
+<li>From host machine open a terminal/console:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -ti rockergeo bash
+</span></span></code></pre></div></li>
+<li>Update repositories and install SAGA ... (<em>I should really sort out how to install the latest version of SAGA ...</em>)
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt install saga
+</span></span></code></pre></div><h3 id="extra-rstudio-themes">Extra: Rstudio Themes</h3>
+<p>I really like <a href="https://www.garrickadenbuie.com/project/rsthemes/" target="_blank" rel="noopener">Garrick Buie&rsquo;s <code>rsthemes</code></a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">devtools</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&#34;gadenbuie/rsthemes&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">rsthemes</span><span class="o">::</span><span class="nf">install_rsthemes</span><span class="p">(</span><span class="n">include_base16</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span></code></pre></div><p>To make quick changes to the theme I add the following to my global profile. Note that on a fresh install this may be a blank file.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">## to open the profile file</span>
+</span></span><span class="line"><span class="cl"><span class="n">usethis</span><span class="o">::</span><span class="nf">edit_r_profile</span><span class="p">()</span>  
+</span></span></code></pre></div><p>add  and save the following.  Then restart R (<code>CTRL + SHIFT + F10</code>)</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1">## rsthemes from https://www.garrickadenbuie.com/project/rsthemes/</span>
+</span></span><span class="line"><span class="cl"><span class="nf">if </span><span class="p">(</span><span class="nf">interactive</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rsthemes</span><span class="o">::</span><span class="nf">set_theme_light</span><span class="p">(</span><span class="s">&#34;Solarized Light {rsthemes}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rsthemes</span><span class="o">::</span><span class="nf">set_theme_dark</span><span class="p">(</span><span class="s">&#34;a11y-dark {rsthemes}&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">rsthemes</span><span class="o">::</span><span class="nf">set_theme_favorite</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">c</span><span class="p">(</span><span class="s">&#34;Fairyfloss {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">#&#34;Oceanic Plus {rsthemes}&#34;,</span>
+</span></span><span class="line"><span class="cl">      <span class="c1">#&#34;Nord Polar Night Aurora {rsthemes}&#34;,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;a11y-dark {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;One Dark {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Solarized Dark {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;base16 Unikitty Dark {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;base16 Apathy {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;base16 Flat {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;Solarized Light {rsthemes}&#34;</span><span class="p">,</span>         <span class="c1">### start light</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;base16 Atelier Lakeside Light {rsthemes}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s">&#34;base16 Atelier Seaside Light {rsthemes}&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Finally, As suggested on the website add a keyboard shortcut to switch themes. From the Rstudio menu:  <code>Tools &gt;&gt; Modify Keyboard Shortcuts ...</code>.  Search for <code>Next Favourite Theme</code> and add a shortcut.  I use <code>Ctrl + Alt + N</code>.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fchisholm.forestecosystems.ca%2Fpost%2Fr-via-docker-fresh-start%2F&amp;text=R&#43;via&#43;Docker&#43;%E2%80%94&#43;A&#43;fresh&#43;start" target="_blank" rel="noopener" class="share-btn-twitter" aria-label="twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fchisholm.forestecosystems.ca%2Fpost%2Fr-via-docker-fresh-start%2F&amp;t=R&#43;via&#43;Docker&#43;%E2%80%94&#43;A&#43;fresh&#43;start" target="_blank" rel="noopener" class="share-btn-facebook" aria-label="facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a href="mailto:?subject=R%20via%20Docker%20%E2%80%94%20A%20fresh%20start&amp;body=https%3A%2F%2Fchisholm.forestecosystems.ca%2Fpost%2Fr-via-docker-fresh-start%2F" target="_blank" rel="noopener" class="share-btn-email" aria-label="envelope">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fchisholm.forestecosystems.ca%2Fpost%2Fr-via-docker-fresh-start%2F&amp;title=R&#43;via&#43;Docker&#43;%E2%80%94&#43;A&#43;fresh&#43;start" target="_blank" rel="noopener" class="share-btn-linkedin" aria-label="linkedin-in">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=R&#43;via&#43;Docker&#43;%E2%80%94&#43;A&#43;fresh&#43;start%20https%3A%2F%2Fchisholm.forestecosystems.ca%2Fpost%2Fr-via-docker-fresh-start%2F" target="_blank" rel="noopener" class="share-btn-whatsapp" aria-label="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://chisholm.forestecosystems.ca"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_huc08fc5124dd2196b5a7623dd531e61c2_19150_270x270_fill_q75_lanczos_center.jpg" alt="Colin Chisholm RPF"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://chisholm.forestecosystems.ca">Colin Chisholm RPF</a></h5>
+      <h6 class="card-subtitle">Forest Manager</h6>
+      <p class="card-text">Interested in forests and ecology</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/ColinEChisholm" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://mastodon.social/@colinchisholm@fosstodon.org" target="_blank" rel="noopener">
+        <i class="fab fa-mastodon"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/ColinChisholm" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/colin-chisholm-32299976/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
+  </div>
+
+  <div class="page-footer">
+    
+    
+    <div class="container">
+      <footer class="site-footer">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <p class="powered-by copyright-license-text">
+    © 2023 Colin E Chisholm
+  </p>
+  
+
+
+
+
+
+  
+
+  <p class="powered-by">
+    Powered by:<br/>
+      <a href = "https://pkgs.rstudio.com/blogdown/" target = "_blank"> Blogdown</a>  and
+      <a href = "" target = "_blank">Wowchemy</a>
+  </p>
+</footer>
+
+    </div>
+    
+  </div>
+
+  
+
+
+<script src="/js/vendor-bundle.min.d26509351aa0ff874abbee824e982e9b.js"></script>
+
+
+
+
+  
+
+  
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script id="search-hit-fuse-template" type="text/x-template">
+    <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/krisk/Fuse@v3.2.1/dist/fuse.min.js" integrity="sha512-o38bmzBGX+hD3JHWUFCDA09btWaqrNmoJ3RXLlrysA7PP01Kgs4UlE4MhelE1v5dJR3+cxlR4qQlotsW7jKsnw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/julmot/mark.js@8.11.1/dist/jquery.mark.min.js" integrity="sha512-mhbv5DqBMgrWL+32MmsDOt/OAvqr/cHimk6B8y/bx/xS88MVkYGPiVv2ixKVrkywF2qHplNRUvFsAHUdxZ3Krg==" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<script id="page-data" type="application/json">{"use_headroom":true}</script>
+
+
+
+  <script src="/js/wowchemy-headroom.db4755770454eb63685f8de785c0a172.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<script src="/en/js/wowchemy.min.e8ee06ba8371980ffde659871dd593b0.js"></script>
+
+
+
+
+
+
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <pre><code></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/js/wowchemy-publication.68f8d7090562ca65fc6d3cb3f8f2d2cb.js" type="module"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

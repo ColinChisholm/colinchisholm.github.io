@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/tag/linux/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/tag/linux/index.xml" rel="self" type="application/rss+xml" />
+    <description>linux</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 19 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>linux</title>
+      <link>https://chisholm.forestecosystems.ca/tag/linux/</link>
+    </image>
+    
+    <item>
+      <title>Useful Command-line functions... that I always forget</title>
+      <link>https://chisholm.forestecosystems.ca/post/cli-that-i-always-forget/</link>
+      <pubDate>Thu, 19 Jan 2023 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/cli-that-i-always-forget/</guid>
+      <description>&lt;h1 id=&#34;from-linux&#34;&gt;From linux&lt;/h1&gt;
+&lt;p&gt;But just remember &amp;ndash; easy to run in windows (e.g. have an ubuntu terminal installed)&lt;/p&gt;
+&lt;h2 id=&#34;find&#34;&gt;find&lt;/h2&gt;
+&lt;p&gt;trying to find where those files are?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;find &amp;lt;dir&amp;gt; -name &amp;#34;*pattern*&amp;#34;  ## use wildcards *
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Find files of a certain name/pattern/type &amp;ndash; with the text pattern you are looking for.  In the example, I search for &lt;code&gt;Rmd&lt;/code&gt; files that call ggplot.
+See this &lt;a href=&#34;https://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-string-on-linux?page=1&amp;amp;tab=scoredesc#tab-top&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;StackExchange post&lt;/a&gt; for more details&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep --include=\*.{tyoe} -rnw &amp;#39;/path/to/somewhere/&amp;#39; -e &amp;#34;pattern&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;grep --include=\*.Rmd -rnw . -e &amp;#34;ggplot&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;rsync&#34;&gt;rsync&lt;/h2&gt;
+&lt;p&gt;I often share &lt;code&gt;Rmarkdown&lt;/code&gt; reports via a website or cloud folder, but managing the changes and ensuring the website is up-to-date can be a bit of a pain.  This is where &lt;code&gt;rsync&lt;/code&gt; is awesome with one command, as long as I can remember it, I can push all the changes to the web.&lt;/p&gt;
+&lt;p&gt;The syntax:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rsync ^
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    -av            # a to sync all, v for verbose mode
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    --delete       # will remove files that exist in the destination but not the source 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;source&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &amp;lt;destination&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here is an example for updating this website.  This will cause a ssh tunnel to be established and the sync will be placed in the remote folder on the far side of the &lt;code&gt;:&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rsync -av ./public colin@chisholm.forestecosystems.ca:/home/colin/www/ 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h2 id=&#34;tip&#34;&gt;Tip&lt;/h2&gt;
+&lt;p&gt;For commands that are run numerous times &amp;ndash; put them in a file and run the file. In windows end the file with &lt;code&gt;.bat&lt;/code&gt;.  For linux make it executable &lt;code&gt;chmod 755 filename&lt;/code&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

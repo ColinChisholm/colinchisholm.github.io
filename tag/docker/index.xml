@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/tag/docker/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/tag/docker/index.xml" rel="self" type="application/rss+xml" />
+    <description>docker</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>docker</title>
+      <link>https://chisholm.forestecosystems.ca/tag/docker/</link>
+    </image>
+    
+    <item>
+      <title>Update RStudio in Docker container</title>
+      <link>https://chisholm.forestecosystems.ca/post/update-rstudio-in-docker-container/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/update-rstudio-in-docker-container/</guid>
+      <description>&lt;p&gt;I mainly run R through a &lt;a href=&#34;https://chisholm.forestecosystems.ca/notes/first-use-of-docker/&#34;&gt;Docker session&lt;/a&gt;.  Recently. I wanted to try the latest version of RStudio with its new visual markdown editor.  I am happy to say I was successful! Here are the steps:&lt;/p&gt;
+&lt;p&gt;The following steps will be done via a terminal interface.  To start that: &lt;br&gt;
+&lt;code&gt;docker exec -ti &amp;lt;Rocker-Image-Name&amp;gt; bash&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download the lastest rstudio version:  &lt;br&gt;
+&lt;code&gt;wget https://download2.rstudio.org/server/...bionic/amd64/rstudio-server-&amp;lt;version&amp;gt;.deb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Stop the current rstudio server.
+&lt;ul&gt;
+&lt;li&gt;Save any open files / projects&lt;/li&gt;
+&lt;li&gt;suspend the current server: &lt;br&gt;
+&lt;code&gt;sudo rstudio-server suspend-all&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;shutdown the current server: &lt;br&gt;
+&lt;code&gt;sudo rstudio-server offline&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Remove the current rstudio server (this removes the server program &amp;hellip; not the data).
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get remove rstudio-server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rstudio-server online&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Install the new server and start
+&lt;ul&gt;
+&lt;li&gt;Install via &lt;code&gt;gdebi&lt;/code&gt;^[If gdebi is not installed it can be installed via &lt;code&gt;sudo apt-get install gdebi-core&lt;/code&gt;]. &lt;br&gt;
+&lt;code&gt;sudo gdebi rstudio-server-version.deb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start the server &lt;br&gt;
+&lt;code&gt;sudo rstudio-server online&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;Instructions adapted from:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://rstudio.com/products/rstudio/download-server/debian-ubuntu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://rstudio.com/products/rstudio/download-server/debian-ubuntu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>First Use of Docker</title>
+      <link>https://chisholm.forestecosystems.ca/post/first-use-of-docker/</link>
+      <pubDate>Wed, 07 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/first-use-of-docker/</guid>
+      <description>&lt;p&gt;&lt;em&gt;minor update below: troubleshooting with terminal interface&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;So I started seeing things on twitter about using &lt;a href=&#34;https://www.docker.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;docker&lt;/a&gt; to run a standard version of R and with most the libraries I use on a regular basis already installed.  I gave it a shot and now I need to sort this out even more &amp;ndash; what a great tool!  In addition, if you have a group of people using R on a project it should be quite simple to state the image to use or actually provide the image of R, Rstudio, and all the packages in one place.&lt;/p&gt;
+&lt;p&gt;Here I am not going to attempt to explain what Docker is &amp;ndash; try &lt;a href=&#34;https://www.youtube.com/results?search_query=how&amp;#43;to&amp;#43;use&amp;#43;docker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;youtube&lt;/a&gt; for that.  I will simply say that Docker is similar to running a virtual machine but with far less overhead.&lt;/p&gt;
+&lt;h2 id=&#34;steps-to-get-rstudio-running-rocker&#34;&gt;Steps to get Rstudio running Rocker.&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Install &lt;a href=&#34;https://www.docker.com/products/docker-desktop&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Find the docker image that you want.  I recommend using: &lt;a href=&#34;https://hub.docker.com/r/rocker/geospatial&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rocker/geospatial&lt;/a&gt;.  Though I will note that there is better documentation at the &lt;a href=&#34;https://hub.docker.com/r/rocker/rstudio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rocker/rstudio&lt;/a&gt; page.&lt;/li&gt;
+&lt;li&gt;At the windows commandline (e.g. w. powershell) run the following (without the linebreaks or comments).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;my_Rstudio&lt;/span&gt;            &lt;span class=&#34;c1&#34;&gt;## name of your image &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;                               &lt;span class=&#34;c1&#34;&gt;## detached mode&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;windows&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;folder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;home&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rstudio&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;## share a folder with docker image&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;8787&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8787&lt;/span&gt;                     &lt;span class=&#34;c1&#34;&gt;## port to view rstudio on &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PASSWORD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;yourpasswordhere&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;## set a password&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;n&#34;&gt;rocker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;geospatial&lt;/span&gt;                &lt;span class=&#34;c1&#34;&gt;## the docker image to use&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Open your webrowser and goto http://localhost:8787/&lt;/li&gt;
+&lt;li&gt;Login and use R&lt;/li&gt;
+&lt;li&gt;Use the Docker GUI to start and stop the instance.  Access it using the docker whale icon&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;older-versions-r36--gdal--proj4&#34;&gt;Older Versions: R3.6 / GDAL / PROJ4&lt;/h2&gt;
+&lt;p&gt;The coversion to PROJ6 seems to be causing some occasional grief.  Some of the legacy PROJ4 projection details throw warnings when opening in a PROJ6 environment.  Here is a docker install that provides earlier gdal and proj versions.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-R&#34; data-lang=&#34;R&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;docker&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;run&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myR_geo_3.6.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;windows&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;folder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;home&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;rstudio&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;m&#34;&gt;8787&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;8787&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;PASSWORD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pithypasswd&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;e&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ROOT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;TRUE&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;           &lt;span class=&#34;n&#34;&gt;rocker&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;geospatial&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;3.6.1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;troubleshooting-with-a-terminal-interface&#34;&gt;Troubleshooting with a terminal interface&lt;/h2&gt;
+&lt;p&gt;A couple times now I have had my Dockerized Rstudio session lockup on me.  Restarting the image, Docker, and the computer all failed to work and I was forced to create a new docker image.  However, this took time as I had installed additional packages and pdf document creation usually required installation of numerous other libraries &amp;hellip; &lt;em&gt;lots of time&lt;/em&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Here is a far easier solution:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open a bash shell (command line interface) for the Docker:  &lt;code&gt;docker exec -ti &amp;lt;DockerName&amp;gt; bash&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;cd to &lt;code&gt;/home/rstudio/.rstudio/sessions/active/&lt;/code&gt; and delete all the files &lt;code&gt;rm -R *&lt;/code&gt; This will loose data in the active session but it should get the rstudio server working again &amp;hellip; Note: I never have Rstudio save my session environment.  And as always save your work as you go!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;up-next&#34;&gt;Up next&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Use QGIS and R together via a docker image. To get started see: &lt;a href=&#34;https://github.com/geocompr/docker#geocomputation-with-r-in-docker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Geocomputation in R in Docker&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Fine tuning &amp;ndash; make my own image that includes the additional libraries I like to use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;additional-resources&#34;&gt;Additional Resources&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.rocker-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.rocker-project.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

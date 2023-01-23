@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CWD | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/tag/cwd/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/tag/cwd/index.xml" rel="self" type="application/rss+xml" />
+    <description>CWD</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>CWD</title>
+      <link>https://chisholm.forestecosystems.ca/tag/cwd/</link>
+    </image>
+    
+    <item>
+      <title>Mapping the Recovery of Coarse Woody Debris</title>
+      <link>https://chisholm.forestecosystems.ca/project/cwd/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/project/cwd/</guid>
+      <description>&lt;p&gt;This work, part of my on-going Masters of Science studies,  compares natural old forests with forests of varied harvest legacies ranging from 20 - 90 years since disturbance.
+In particular, Coarse woody debris (CWD), forms a critically important component of forested ecosystems providing key structures for habitat and nutrition for a plethora of organisms across the kingdoms of life.
+Forest structural components including: stand height, coarse woody debris loading, gaps, and snags are compared through empirical, and remotely sensed data.
+Aerial Laser Scanning and predictive modelling techniques are used to map these attributes.
+The long term recovery and quantifiable impacts of forest harvesting on the 3-dimensional attributes within forest stands and across forested landscapes is highlighted as we demonstrate that theses 3-dimensional stand structures are quantifiable and predictable.&lt;/p&gt;
+&lt;!--[not sure I want to name them here but rather focus in on the CWD]??? --&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

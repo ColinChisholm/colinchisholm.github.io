@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RStudio | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/tag/rstudio/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/tag/rstudio/index.xml" rel="self" type="application/rss+xml" />
+    <description>RStudio</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>RStudio</title>
+      <link>https://chisholm.forestecosystems.ca/tag/rstudio/</link>
+    </image>
+    
+    <item>
+      <title>Update RStudio in Docker container</title>
+      <link>https://chisholm.forestecosystems.ca/post/update-rstudio-in-docker-container/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/update-rstudio-in-docker-container/</guid>
+      <description>&lt;p&gt;I mainly run R through a &lt;a href=&#34;https://chisholm.forestecosystems.ca/notes/first-use-of-docker/&#34;&gt;Docker session&lt;/a&gt;.  Recently. I wanted to try the latest version of RStudio with its new visual markdown editor.  I am happy to say I was successful! Here are the steps:&lt;/p&gt;
+&lt;p&gt;The following steps will be done via a terminal interface.  To start that: &lt;br&gt;
+&lt;code&gt;docker exec -ti &amp;lt;Rocker-Image-Name&amp;gt; bash&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Download the lastest rstudio version:  &lt;br&gt;
+&lt;code&gt;wget https://download2.rstudio.org/server/...bionic/amd64/rstudio-server-&amp;lt;version&amp;gt;.deb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Stop the current rstudio server.
+&lt;ul&gt;
+&lt;li&gt;Save any open files / projects&lt;/li&gt;
+&lt;li&gt;suspend the current server: &lt;br&gt;
+&lt;code&gt;sudo rstudio-server suspend-all&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;shutdown the current server: &lt;br&gt;
+&lt;code&gt;sudo rstudio-server offline&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Remove the current rstudio server (this removes the server program &amp;hellip; not the data).
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get remove rstudio-server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rstudio-server online&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Install the new server and start
+&lt;ul&gt;
+&lt;li&gt;Install via &lt;code&gt;gdebi&lt;/code&gt;^[If gdebi is not installed it can be installed via &lt;code&gt;sudo apt-get install gdebi-core&lt;/code&gt;]. &lt;br&gt;
+&lt;code&gt;sudo gdebi rstudio-server-version.deb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Start the server &lt;br&gt;
+&lt;code&gt;sudo rstudio-server online&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;Instructions adapted from:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://rstudio.com/products/rstudio/download-server/debian-ubuntu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://rstudio.com/products/rstudio/download-server/debian-ubuntu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://support.rstudio.com/hc/en-us/articles/216079967-Upgrading-RStudio-Server&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

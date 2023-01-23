@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>opensource | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/category/opensource/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/category/opensource/index.xml" rel="self" type="application/rss+xml" />
+    <description>opensource</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>opensource</title>
+      <link>https://chisholm.forestecosystems.ca/category/opensource/</link>
+    </image>
+    
+    <item>
+      <title>My Goto Software</title>
+      <link>https://chisholm.forestecosystems.ca/post/goto-software/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/goto-software/</guid>
+      <description>&lt;h1 id=&#34;authoring&#34;&gt;Authoring&lt;/h1&gt;
+&lt;h2 id=&#34;citation-software&#34;&gt;Citation Software&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zotero.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Zotero&lt;/a&gt;: &lt;em&gt;Your personal research assistant&lt;/em&gt;.  Entering grad studies and beginning many weeks of reading this has revolutionized my life.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://retorque.re/zotero-better-bibtex/installation/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Better Bibtex for Zotero&lt;/a&gt; keep an always up to date .bib file for integration with LaTeX or Rmarkdown citation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;latex&#34;&gt;LaTeX&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m not totally convinced that I want to commit to LaTeX as Rmarkdown and bookdown do such nice jobs of it.  That being said it is a great fallback.  Escape GUI document writing and get using this typesetting system that has you focus on your words not on your formatting.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://miktex.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MikTeX&lt;/a&gt; the engine of LaTeX&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.texstudio.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TeXStudio&lt;/a&gt; that don&amp;rsquo;e call it this but essentially it is an IDE for LaTeX.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;gis-and-remote-sensing&#34;&gt;GIS and Remote Sensing&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qgis.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;QGIS&lt;/a&gt;: On MS Windows I recommend using &lt;a href=&#34;https://trac.osgeo.org/osgeo4w/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OSGEO4W&lt;/a&gt; installer to ensure that you get all the goodies and plugins.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;www.saga-gis.org&#34;&gt;SAGA GIS&lt;/a&gt;: Although often bundled with the QGIS a newer version is available via &lt;a href=&#34;https://sourceforge.net/projects/saga-gis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://sourceforge.net/projects/saga-gis/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;LASTools&lt;/a&gt;: Very powerful set of tools for manipulating, using, and extracting additional data products from LiDAR.   I have the privellage of using this through our lab&amp;rsquo;s accademic license.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://appliedimagery.com/download/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quick Terrain Reader&lt;/a&gt;.  Freeware - Great for displaying LAS data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;stats&#34;&gt;Stats&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;R&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;www.rstudio.com&#34;&gt;RStudio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cran.r-project.org/bin/windows/Rtools/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rtools&lt;/a&gt; &amp;ndash; essential if using packages that are in development (e.g. on GitHub)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;essential-packages-for-r&#34;&gt;Essential Packages for R&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-r&#34; data-lang=&#34;r&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Stats and the tidyverse&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tidyverse&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;psych&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lme4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;caret&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Geo-spatial analysis&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;sf&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;sp&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;raster&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;stars&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lwgeom&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;         &lt;span class=&#34;s&#34;&gt;&amp;#34;mapview&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;tmap&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;lidR&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;gdalcubes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Creating documents and interactive documents&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;pk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pk&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;rmarkdown&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;bookdown&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;rmdformats&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                   &lt;span class=&#34;s&#34;&gt;&amp;#34;blogdown&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;rticles&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;## Install the packages if this has not been done already&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;new.packages&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;pk[&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;pk&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%in%&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;installed.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Package&amp;#34;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nf&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;length&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;install.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;new.packages&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;someday I may get around to documenting how to make the above packages portable &amp;hellip; mostly&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&#34;utilities&#34;&gt;Utilities&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://conemu.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ConEmu&lt;/a&gt;: essential replacement of the windows CMD.exe shell.  OK it&amp;rsquo;s more of an integration of that shell&amp;hellip; but bettter.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://turtlewar.org/projects/editor/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kinesics Text Editor&lt;/a&gt;: like nano but for windows &amp;ndash; great to have this coupled with ConEmu.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://atom.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Atom&lt;/a&gt; - excellent text editor! Really what does a text editor do&amp;hellip; This one seems to be able to do anything you want! Syntax highlighting, Markdown preview.  Integration with gitHub, &amp;hellip;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/downloads&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GIT&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://desktop.github.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GitHub GUI&lt;/a&gt; a nice little program for viewing git changes &amp;ndash; note can be used in git folders that are not uploaded to github.  _Caution!! &amp;ndash; I think it is actually better practice to use the commandline then to make changes with the GUI &amp;hellip; It is very easy to get yourself in trouble with the GUI&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://freecommander.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;FreeCommander&lt;/a&gt; a replacement for windows file explorer.  Allows 2 panes and some great file sync utilities.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.7-zip.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;7-zip&lt;/a&gt; A great file compression utility. When in windows don&amp;rsquo;t forget to install the commandline portion&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

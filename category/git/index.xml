@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/category/git/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/category/git/index.xml" rel="self" type="application/rss+xml" />
+    <description>git</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Fri, 18 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>git</title>
+      <link>https://chisholm.forestecosystems.ca/category/git/</link>
+    </image>
+    
+    <item>
+      <title>usethis, git, and GitHub</title>
+      <link>https://chisholm.forestecosystems.ca/post/usethis-git-and-github/</link>
+      <pubDate>Fri, 18 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/post/usethis-git-and-github/</guid>
+      <description>&lt;p&gt;I have started getting into package development and finding the &lt;a href=&#34;https://usethis.r-lib.org/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;usethis&lt;/code&gt;&lt;/a&gt; package to
+be very useful.  To smooth out some bumps with version control &amp;ndash; really switching
+back and forth between console and terminal for git commits. Note: I don&amp;rsquo;t like to
+use the GUi&amp;rsquo;s Git tab  &amp;ndash; typing makes sure I really mean what I do.&lt;/p&gt;
+&lt;p&gt;The following is taken from the &lt;a href=&#34;https://usethis.r-lib.org/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&lt;code&gt;usethis&lt;/code&gt;&lt;/a&gt; documentation.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;library(usethis)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;a. Initiate use of git (local)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;usethis::use_git()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;b. Default editor&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use_git_config(core.editor = &amp;#34;nano&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;c. Build connection with GitHub.  This includes contact info and a personal
+access token. Finally git_sitrep() provides a report of how things are set.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;use_git_config(user.name = &amp;#34;First Last&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;               user.email = &amp;#34;your.email@someplace.xyz&amp;#34;)
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;create_github_token() ## will open up github to create a token
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;gitcreds::gitcreds_set() ## paste in the new token
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git_sitrep()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the steps above any R functions relying on git should work without an issue.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I did have one problem getting started where &lt;code&gt;gitcreds::gitcreds_set()&lt;/code&gt; could not find
+git on my machine.  To solve this I installed a updated version of &lt;a href=&#34;https://git-scm.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;git&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

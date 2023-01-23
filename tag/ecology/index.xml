@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ecology | Colin Chisholm</title>
+    <link>https://chisholm.forestecosystems.ca/tag/ecology/</link>
+      <atom:link href="https://chisholm.forestecosystems.ca/tag/ecology/index.xml" rel="self" type="application/rss+xml" />
+    <description>Ecology</description>
+    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Sun, 20 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://chisholm.forestecosystems.ca/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <title>Ecology</title>
+      <link>https://chisholm.forestecosystems.ca/tag/ecology/</link>
+    </image>
+    
+    <item>
+      <title>Mapping the Recovery of Coarse Woody Debris</title>
+      <link>https://chisholm.forestecosystems.ca/project/cwd/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/project/cwd/</guid>
+      <description>&lt;p&gt;This work, part of my on-going Masters of Science studies,  compares natural old forests with forests of varied harvest legacies ranging from 20 - 90 years since disturbance.
+In particular, Coarse woody debris (CWD), forms a critically important component of forested ecosystems providing key structures for habitat and nutrition for a plethora of organisms across the kingdoms of life.
+Forest structural components including: stand height, coarse woody debris loading, gaps, and snags are compared through empirical, and remotely sensed data.
+Aerial Laser Scanning and predictive modelling techniques are used to map these attributes.
+The long term recovery and quantifiable impacts of forest harvesting on the 3-dimensional attributes within forest stands and across forested landscapes is highlighted as we demonstrate that theses 3-dimensional stand structures are quantifiable and predictable.&lt;/p&gt;
+&lt;!--[not sure I want to name them here but rather focus in on the CWD]??? --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Predictive Ecosystem Mapping</title>
+      <link>https://chisholm.forestecosystems.ca/project/pem/</link>
+      <pubDate>Sun, 20 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>https://chisholm.forestecosystems.ca/project/pem/</guid>
+      <description>&lt;p&gt;A collaborative research project examining the ability of Remote Sensing data to predict ecosystems at a fine spatial resolution Ecosystem classes, that is Site Series in British Columbia&amp;rsquo;s Biogeoclimatic ecosystem classification system (&lt;a href=&#34;https://www.for.gov.bc.ca/hre/becweb/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BC-BEC&lt;/a&gt;)
+where site series may be mapped to areas as small as 0.05 hectares – a suggested minimum mappable unit below which it is not operationally feasible to implement.  Current standards for minimum mappable unit area is 0.25 ha.&lt;/p&gt;
+&lt;h3 id=&#34;project-collaborators&#34;&gt;Project Collaborators&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Government
+&lt;ul&gt;
+&lt;li&gt;Ministry of Forests
+&lt;ul&gt;
+&lt;li&gt;Pam Dykstra, Forest Ecology Interpretations, &lt;em&gt;project leader&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Will MacKenzie, Forest Ecology and Interpretations, [ADD Title], Smithers&amp;rsquo; Deception Lake area pilot site&lt;/li&gt;
+&lt;li&gt;Mike Ryan, Forest Ecology and Interpretations, [ADD Title], Kamloops&amp;rsquo; Eagle Hills Pilot Site&lt;/li&gt;
+&lt;li&gt;Gen Perkins&lt;/li&gt;
+&lt;li&gt;Matthew Coghill&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Ministry of Environment
+&lt;ul&gt;
+&lt;li&gt;Deepa Filatow, [Add title], advisor&lt;/li&gt;
+&lt;li&gt;Chuck Balmer, [ADD title], advisor&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Academia&lt;/li&gt;
+&lt;li&gt;University of Northern British Columbia (&lt;a href=&#34;www.unbc.ca&#34;&gt;UNBC&lt;/a&gt;)
+&lt;ul&gt;
+&lt;li&gt;Che Elkin, Mixedwood Ecology Chair&lt;/li&gt;
+&lt;li&gt;Luiz Terezan, Graduate student&lt;/li&gt;
+&lt;li&gt;Dalhousie University
+&lt;ul&gt;
+&lt;li&gt;Brandon Hueng&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;University of British Columbia (&lt;a href=&#34;www.ubc.ca&#34;&gt;UBC&lt;/a&gt;)
+&lt;ul&gt;
+&lt;li&gt;Nicolas Coops, Canada Research Chair in Remote Sensing, advisor&lt;/li&gt;
+&lt;li&gt;Lukas Jaron, Graduate student&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Thompson Rivers University
+&lt;ul&gt;
+&lt;li&gt;David Hill&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Aleza Lake Research Forest (&lt;a href=&#34;alrf.unbc.ca&#34;&gt;ALRF&lt;/a&gt;), an operation research forest, initially established by government in 1924.  Now independently managed.  Associated with UNBC.
+An
+&lt;ul&gt;
+&lt;li&gt;Colin Chisholm, Assistant Forest Manager, the research forest is the Prince George area&amp;rsquo;s pilot site.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://opengeohub.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenGeoHub Foundation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Tomislav Hengl&lt;/li&gt;
+&lt;li&gt;Robert MacMillian&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
